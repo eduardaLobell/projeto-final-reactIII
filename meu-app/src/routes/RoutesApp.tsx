@@ -1,19 +1,21 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import Home from "../pages/Home"
+import Personagem from "../pages/Personagem"
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <h1>Home</h1>
+    element: <Home />
     //errorElement: <NotFound />,
   },
   {
-    path: "/personagem",
-    element: <h1>Personagem</h1>
+    path: "/personagem/:id",
+    element: <Personagem />
   }
-]);
+])
 
 function RoutesApp() {
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />
 }
 
-export default RoutesApp;
+export default RoutesApp
