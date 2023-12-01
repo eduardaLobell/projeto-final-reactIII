@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 import { listarPokemons } from "./actions"
 
 export interface PokemonSumario {
@@ -29,7 +29,23 @@ const initialState: PokemonRetorno = {
 const pokemonsSlice = createSlice({
     name: 'pokemons',
     initialState,
-    reducers: {}, // obrigatório
+    reducers: {
+        // toggleFavorito: (state, action: PayloadAction<{ id: number }>) => {
+        //     const temp = [...state.pokemons.favorito];
+      
+        //     const index = temp.findIndex((foto) => foto.id === action.payload.id);
+      
+        //     if (index !== -1) {
+        //       // true = false
+        //       // false = true
+        //       temp[index].favorito = !temp[index].favorito;
+        //     }
+      
+        //     state = [...temp];
+        //   },
+      
+
+    }, // obrigatório
     extraReducers: (builder) => {
         builder.addCase(listarPokemons.fulfilled, (state, action) => {
             if(!action.payload) return
@@ -39,7 +55,6 @@ const pokemonsSlice = createSlice({
             state.next = action.payload.next;
             state.previous = action.payload.previous;
             state.pokemons = action.payload.pokemons;
-            return state
         })
     }
 })
