@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { listarPokemons } from "./actions"
+import { listarPokemons, listarPorId } from "./actions"
 
 export interface PokemonSumario {
     id: number
@@ -8,6 +8,14 @@ export interface PokemonSumario {
     imagemURL: string
     detalhesURL: string
     favorito: boolean
+}
+
+export interface PokemonDetalhes {
+    id: number
+    nome: string
+    tamanho: string
+    imagemURL: string
+    habilidades: []
 }
 
 interface PokemonRetorno {
@@ -55,6 +63,11 @@ const pokemonsSlice = createSlice({
             state.next = action.payload.next;
             state.previous = action.payload.previous;
             state.pokemons = action.payload.pokemons;
+        }),
+        builder.addCase(listarPorId.fulfilled, (state, action) => {
+            if(!action.payload) return
+
+            
         })
     }
 })

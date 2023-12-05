@@ -16,7 +16,13 @@ function BotaoPaginacao() {
 
     return (
         <>
-            <Stack>
+            <Stack
+            sx={{
+                justifyContent: "center",
+                alignItems: "center",
+                pt: 3,
+                pb: 3
+            }}>
                 <Pagination count={Math.round(contadorPokemons / 20)} onChange={handleChange} />
             </Stack>
         </>

@@ -16,7 +16,6 @@ function Home() {
     return (
         <>
             <AppBarStyled />
-            <h1>Home</h1>
             <ListarPokemons />
             <BotaoPaginacao />
         </>

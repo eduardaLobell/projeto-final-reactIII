@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { Card, CardActions, CardContent, Button, Typography, Avatar, Container, Grid, IconButton } from '@mui/material'
+import { Card, CardActions, CardContent, Box, Typography, Avatar, Container, Grid, IconButton, CardMedia } from '@mui/material'
 import { useEffect } from "react";
 import { PokemonSumario } from "../store/modules/pokemons/pokemons.slice";
-import { FavoriteRounded, FavoriteBorderRounded } from '@mui/icons-material'
+import { FavoriteRounded, FavoriteBorderRounded, VisibilityRounded } from '@mui/icons-material'
 
 function ListarPokemons() {
 
@@ -25,19 +25,30 @@ function ListarPokemons() {
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {pokemons.map((item: PokemonSumario) => (
             <Grid item xs={2} sm={4} md={4}>
-              <Card sx={{ maxWidth: 345, justifyContent: 'center', alignItems: 'center' }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src={item.imagemURL}
-                  sx={{ width: 130, height: 130 }}
+              <Card sx={{
+                
+                display: "flex",
+                flexDirection: "column"
+              }}
+              elevation={5}
+              >
+                <CardMedia
+                  sx={{  height: 200, backgroundPosition:"center", backgroundSize: "contain",
+                  marginTop: 3
+                 }}
+                 
+                  image={item.imagemURL}
+                  title="green iguana"
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div" >
-                    <strong>{item.id} - {item.nome}</strong>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {item.nome}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
+                    ID - {item.id}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Tamanho - {item.tamanho}
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -51,8 +62,21 @@ function ListarPokemons() {
                       <FavoriteBorderRounded color="error" />
                     )}
                   </IconButton>
+
+                  <IconButton
+                    aria-label="eyes"
+                    onClick={() => handleFavorite(item.id)}
+                  >
+                    {item.favorito ? (
+                      <VisibilityRounded color="disabled" />
+                    ) : (
+                      <VisibilityRounded color="disabled" />
+                    )}
+                  </IconButton>
                 </CardActions>
               </Card>
+
+
             </Grid>
           ))}
 

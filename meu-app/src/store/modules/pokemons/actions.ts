@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { PokemonSumario } from './pokemons.slice'
+import { PokemonDetalhes, PokemonSumario } from './pokemons.slice'
+import { CatchingPokemonTwoTone } from '@mui/icons-material'
 
 
 const URL = 'https://pokeapi.co/api/v2'
@@ -23,8 +24,6 @@ export const listarPokemons = createAsyncThunk('listarTodosPokemons', async (off
                 detalhesURL: pokemon.url,
                 favorito: false,
             })
-
-           
         }
 
         return {
@@ -34,6 +33,26 @@ export const listarPokemons = createAsyncThunk('listarTodosPokemons', async (off
             pokemons: pokemons
         }
 
+    } catch {
+        return null
+    }
+})
+
+export const listarPorId = createAsyncThunk('listarPorId', async (id: number | string) => {
+    try {
+        const resposta = await api.get(`/pokemon/${id}`)
+        const retorno = resposta.data.results
+        const pokemon : PokemonDetalhes = {
+            id: retorno.id,
+            habilidades: retorno.abilities,
+            imagemURL: retorno.sprites.front_shiny,
+            nome: retorno.name,
+            tamanho: retorno.height
+        }
+
+        return pokemon
+
+        
     } catch {
         return null
     }
