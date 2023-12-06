@@ -6,6 +6,8 @@ import InputBase from "@mui/material/InputBase";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { alpha, styled } from "@mui/material/styles";
+import { useEffect, useState } from "react";
+import useDebounce from "./utils/hooks/UseDebounce";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -49,6 +51,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 function AppBarStyled() {
+  
+  const [searchInput, setSearchInput] = useState("");
+  const [rows, setRows] = useState(Search);
+  const debouncedValue = useDebounce(searchInput, 700);
+
+  // useEffect(() => {
+  //   if (searchInput) {
+  //     const filteredPoke = pokemons.filter((item) =>
+  //     item.goal.toLowerCase().includes(searchInput.toLowerCase()),
+  //     );
+  //     setRows(filteredPoke);
+  //   } else {
+  //     setRows(pokemons.slice);
+  //   }
+  // }, [debouncedValue, searchInput, rows]);
+
   return (
     <Box  justifyContent="center" textAlign="center" sx={{ flexGrow: 1, marginBottom: 5 }}>
       <AppBar position="static" sx={{ py: 1.25, backgroundColor: "#1f1f1f" }}>
@@ -68,8 +86,11 @@ function AppBarStyled() {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Buscar..."
               inputProps={{ "aria-label": "search" }}
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              required
             />
           </Search>
         </Toolbar>

@@ -3,12 +3,14 @@ import { Card, CardActions, CardContent, Box, Typography, Avatar, Container, Gri
 import { useEffect } from "react";
 import { PokemonSumario } from "../store/modules/pokemons/pokemons.slice";
 import { FavoriteRounded, FavoriteBorderRounded, VisibilityRounded } from '@mui/icons-material'
+import Personagem from "../pages/Personagem";
+import { listarPorId } from "../store/modules/pokemons/actions";
 
 function ListarPokemons() {
 
   const dispatch = useAppDispatch();
   function handleFavorite(id: number) {
-    // dispatch(toggleFavorito({ id }));
+    dispatch(listarPorId(id))
   }
 
   const pokemons = useAppSelector((state) => state.pokemons.pokemons)
@@ -67,11 +69,9 @@ function ListarPokemons() {
                     aria-label="eyes"
                     onClick={() => handleFavorite(item.id)}
                   >
-                    {item.favorito ? (
-                      <VisibilityRounded color="disabled" />
-                    ) : (
-                      <VisibilityRounded color="disabled" />
-                    )}
+                   
+                  <VisibilityRounded color="primary" onClick={() => Personagem} />
+                   
                   </IconButton>
                 </CardActions>
               </Card>
