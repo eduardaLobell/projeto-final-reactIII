@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { PokemonSumario } from "../store/modules/pokemons/pokemons.slice";
 import { FavoriteRounded, FavoriteBorderRounded, VisibilityRounded } from '@mui/icons-material'
 import Personagem from "../pages/Personagem";
-import { listarPorId } from "../store/modules/pokemons/actions";
+import { listarPorId } from "../store/modules/pokemons/actions.detalhes";
+
 
 function ListarPokemons() {
 
@@ -26,7 +27,7 @@ function ListarPokemons() {
       <Container >
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           {pokemons.map((item: PokemonSumario) => (
-            <Grid item xs={2} sm={4} md={4}>
+            <Grid item xs={2} sm={3} md={3}>
               <Card sx={{
                 
                 display: "flex",

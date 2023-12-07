@@ -1,13 +1,13 @@
 import SearchIcon from "@mui/icons-material/Search";
-import { Avatar } from "@mui/material";
+import { Avatar, ImageList, ImageListItem } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import { alpha, styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
-import useDebounce from "./utils/hooks/UseDebounce";
+// import useDebounce from "./utils/hooks/UseDebounce";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -53,8 +53,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function AppBarStyled() {
   
   const [searchInput, setSearchInput] = useState("");
-  const [rows, setRows] = useState(Search);
-  const debouncedValue = useDebounce(searchInput, 700);
+  // const [rows, setRows] = useState(Search);
+  // const debouncedValue = useDebounce(searchInput, 700);
 
   // useEffect(() => {
   //   if (searchInput) {
@@ -69,19 +69,23 @@ function AppBarStyled() {
 
   return (
     <Box  justifyContent="center" textAlign="center" sx={{ flexGrow: 1, marginBottom: 5 }}>
-      <AppBar position="static" sx={{ py: 1.25, backgroundColor: "#1f1f1f" }}>
-        <Toolbar>
-          <Avatar alt="icon pokemon" src="src/assets/pokemon-icon.svg" />
-
-          <Typography
+      <AppBar position="static" sx={{ py: 1.25, backgroundColor: "#9b0505" }}>
+        <Toolbar sx={{ justifyContent: 'center' }}>
+          {/* <Avatar alt="icon pokemon" src="src/assets/pokemon-icon.svg" /> */}
+            <ImageList sx={{width: 200, display: {xs: 'none', sm: "block"}}} >
+              <ImageListItem >
+                <img src="src\assets\pokemon-logo-8.png" alt=""  />
+              </ImageListItem>
+            </ImageList>
+          {/* <Typography
             variant="h5"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Pokémon API
-          </Typography>
-          <Search>
+          Pokémon
+          </Typography> */}
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -92,7 +96,7 @@ function AppBarStyled() {
               onChange={(e) => setSearchInput(e.target.value)}
               required
             />
-          </Search>
+          </Search> */}
         </Toolbar>
       </AppBar>
     </Box>

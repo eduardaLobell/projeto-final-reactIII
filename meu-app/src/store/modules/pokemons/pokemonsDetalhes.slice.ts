@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { listarPorId } from "./actions";
+import { listarPorId } from "./actions.detalhes";
 
 
 export interface PokemonDetalhes {
@@ -35,6 +35,7 @@ const pokemonDetalhesSlice = createSlice ({
 
 
             state = action.payload
+            return state
         })
     }
 })

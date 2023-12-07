@@ -4,6 +4,7 @@ import { useAppDispatch } from "../store/hooks";
 import ListarPokemons from "../components/ListarPokemons";
 import BotaoPaginacao from "../components/BotaoPaginacao";
 import AppBarStyled from "../components/AppBarStyled";
+import FloatButton from "../components/FloatButton";
 
 function Home() {
     const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ function Home() {
             <AppBarStyled />
             <ListarPokemons />
             <BotaoPaginacao />
+            <FloatButton />
         </>
     )
     

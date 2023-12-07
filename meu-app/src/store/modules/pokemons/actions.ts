@@ -38,26 +38,6 @@ export const listarPokemons = createAsyncThunk('listarTodosPokemons', async (off
     }
 })
 
-export const listarPorId = createAsyncThunk('listarPorId', async (idnumber: number | string) => {
-    try {
-        const resposta = await api.get('/pokemon/', {params: {id: idnumber}})
-        const retorno = resposta.data.results
-        const pokemon : PokemonDetalhes = {
-            id: retorno.id,
-            habilidades: retorno.abilities,
-            imagemURL: retorno.sprites.front_shiny,
-            nome: retorno.name,
-            tamanho: retorno.height
-            // stats: retorno.stats
-        }
-
-        return pokemon
-
-        
-    } catch {
-        return null
-    }
-})
 
 
 // const responsePokemons = await axios.get(url);
