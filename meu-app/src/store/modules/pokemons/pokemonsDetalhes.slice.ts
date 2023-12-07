@@ -34,7 +34,11 @@ const pokemonDetalhesSlice = createSlice ({
             if(!action.payload) return
 
 
-            state = action.payload
+            state.id = action.payload.id
+            state.nome = action.payload.nome
+            state.habilidades = action.payload.habilidades
+            state.imagemURL = action.payload.imagemURL
+            state.tamanho = action.payload.tamanho
             return state
         })
     }

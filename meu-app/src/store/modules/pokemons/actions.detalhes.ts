@@ -12,7 +12,7 @@ const api = axios.create({
 export const listarPorId = createAsyncThunk('listarPorId', async (idnumber: number | string) => {
     try {
         const resposta = await api.get('/pokemon/', {params: {id: idnumber}})
-        const retorno = resposta.data.results
+        const retorno = resposta.data.object
         const pokemon : PokemonDetalhes = {
             id: retorno.id,
             habilidades: retorno.abilities,

@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { listarPokemons, listarPorId } from "./actions"
+import { listarPokemons } from "./actions"
 
 export interface PokemonSumario {
     id: number
