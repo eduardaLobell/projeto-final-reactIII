@@ -5,6 +5,8 @@ import ListarPokemons from "../components/ListarPokemons";
 import BotaoPaginacao from "../components/BotaoPaginacao";
 import AppBarStyled from "../components/AppBarStyled";
 import FloatButton from "../components/FloatButton";
+import { Box } from '@mui/material'
+
 
 function Home() {
     const dispatch = useAppDispatch();
@@ -16,10 +18,13 @@ function Home() {
 
     return (
         <>
+        <Box component="main" height="100%" width="100%" bgcolor="#6e6d6d">
             <AppBarStyled />
             <ListarPokemons />
             <BotaoPaginacao />
             <FloatButton />
+        </Box>
+            
         </>
     )
     

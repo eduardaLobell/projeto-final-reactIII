@@ -1,20 +1,29 @@
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { Card, CardActions, CardContent, Box, Typography, Avatar, Container, Grid, IconButton, CardMedia } from '@mui/material'
+import { Card, CardActions, CardContent, Box, Typography, Avatar, Container, Grid, IconButton, CardMedia, Button } from '@mui/material'
 import { useEffect } from "react";
 import { PokemonSumario } from "../store/modules/pokemons/pokemons.slice";
 import { FavoriteRounded, FavoriteBorderRounded, VisibilityRounded } from '@mui/icons-material'
 import Personagem from "../pages/Personagem";
-import { listarPorId } from "../store/modules/pokemons/actions.detalhes";
+import { listarPorId } from "../store/modules/pokemon/actions";
+import { useNavigate } from "react-router-dom";
 
 
 function ListarPokemons() {
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+
   function handleFavorite(id: number) {
     dispatch(listarPorId(id))
   }
 
+  function handleDetails(id: number) {
+    navigate(`/personagem/${id}`);
+  }
+
   const pokemons = useAppSelector((state) => state.pokemons.pokemons)
+
 
   useEffect(() => {
     if (pokemons.length) {
@@ -29,51 +38,42 @@ function ListarPokemons() {
           {pokemons.map((item: PokemonSumario) => (
             <Grid item xs={2} sm={3} md={3}>
               <Card sx={{
-                
                 display: "flex",
                 flexDirection: "column"
               }}
-              elevation={5}
+                elevation={5}
               >
                 <CardMedia
-                  sx={{  height: 200, backgroundPosition:"center", backgroundSize: "contain",
-                  marginTop: 3
-                 }}
-                 
+                  sx={{
+                    height: 200, backgroundPosition: "center", backgroundSize: "contain",
+                    marginTop: 3
+                  }}
+
                   image={item.imagemURL}
-                  title="green iguana"
+                  title="pokemon"
                 />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                <CardContent >
+                  <Typography gutterBottom variant="h4">
                     {item.nome}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    ID - {item.id}
+                    ID: {item.id}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Tamanho - {item.tamanho}
+                    Altura: {item.altura}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Largura: {item.largura}
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <IconButton
-                    aria-label="Favorite"
-                    onClick={() => handleFavorite(item.id)}
-                  >
-                    {item.favorito ? (
-                      <FavoriteRounded color="error" />
-                    ) : (
-                      <FavoriteBorderRounded color="error" />
-                    )}
-                  </IconButton>
+                  <Button variant="outlined" color="success" onClick={() => handleDetails(item.id)}>
+                    Detalhes
+                  </Button>
 
-                  <IconButton
-                    aria-label="eyes"
-                    onClick={() => handleFavorite(item.id)}
-                  >
-                   
-                  <VisibilityRounded color="primary" onClick={() => Personagem} />
-                   
-                  </IconButton>
+                  <Button variant="outlined" color="error">
+                    Favoritar
+                  </Button>
                 </CardActions>
               </Card>
 
