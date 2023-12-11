@@ -10,12 +10,12 @@ import { useNavigate } from "react-router-dom";
 
 function ListarPokemons() {
 
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
 
   function handleFavorite(id: number) {
-    dispatch(listarPorId(id))
+    
   }
 
   function handleDetails(id: number) {
@@ -71,7 +71,7 @@ function ListarPokemons() {
                     Detalhes
                   </Button>
 
-                  <Button variant="outlined" color="error">
+                  <Button onClick={() =>  handleFavorite(item.id)} variant="outlined" color="error">
                     Favoritar
                   </Button>
                 </CardActions>

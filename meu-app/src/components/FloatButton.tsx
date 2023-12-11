@@ -4,7 +4,7 @@ import { Box, Fab, ImageList, ImageListItem } from "@mui/material";
 function FloatButton() {
     return (
         <Box>
-            <Fab  sx={{ position: 'absolute', bottom: 16, right: 16, backgroundColor: "#9b0505", backgroundImage: "https://static.wikia.nocookie.net/pokepediabr/images/3/38/Pok%C3%A9dex_Kanto.png/revision/latest?cb=20131224014121&path-prefix=pt-br"  }} aria-label="add">
+            <Fab  sx={{ position: 'absolute', bottom: 16, right: 16, backgroundColor: "#9b0505", display: 'flex' }} aria-label="add">
             <ImageList>
                 <ImageListItem>
                     <img src="\assets\Pok%3Fdex_Kanto.webp" alt="" />

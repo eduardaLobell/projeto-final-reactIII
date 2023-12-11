@@ -1,11 +1,20 @@
 import { Card, CardActions, CardContent, CardMedia, Container, Grid, IconButton, Typography } from '@mui/material'
 import { } from '@mui/icons-material'
-import { useAppSelector } from '../store/hooks'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { listarPorId } from '../store/modules/pokemon/actions'
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 
 
 function PokemonDetalhes() {
     const pokemon = useAppSelector((state) => state.pokemonDetalhes)
+    const dispatch = useAppDispatch()
+    const { id } = useParams();
+
+    useEffect(() => {
+        dispatch(listarPorId(id));
+    }, [dispatch, id]);
 
     return (
         <>
@@ -41,7 +50,7 @@ function PokemonDetalhes() {
                                     Largura: {pokemon.largura}
                                 </Typography>
 
-                                
+
                                 <Typography variant="body2" color="text.secondary">
                                     Largura:
                                 </Typography>

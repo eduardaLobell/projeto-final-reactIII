@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Home from "../pages/Home"
 import Personagem from "../pages/Personagem"
+import Pokedex from "../pages/Pokedex"
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
   {
     path: "/personagem/:id",
     element: <Personagem />
+  },
+  {
+    path: "/pokedex/:id",
+    element: <Pokedex />
   }
 ])
 

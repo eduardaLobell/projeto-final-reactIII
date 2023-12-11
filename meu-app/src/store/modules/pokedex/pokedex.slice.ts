@@ -1,26 +1,33 @@
-// import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 
 
-// export interface Pokedex {
-//     id: number
-//     nome: string
-//     imagemURL: string
+export interface Pokedex {
+    id: number
+    nome: string
+    imagemURL: string
     
-// }
+}
 
-// const pokedexSlice = createSlice ({
-//     name: 'pokedex',
-//     initialState,
-//     reducers: {},
-//     extraReducers: (builder) => {
-//         builder.addCase(listarPorId.fulfilled, (state, action) => {
-//             if(!action.payload) return
+const initialState: Pokedex[] = []
 
+const pokedexSlice = createSlice ({
+    name: 'pokedex',
+    initialState,
+    reducers: {
+        addPokedex: (state, action: PayloadAction<Pokedex>) => {
+            const pokemonExiste = state.findIndex(
+              (pokemon) => pokemon.id == action.payload.id
+            );
+            if (pokemonExiste !== -1) {
+                return
+            }
+      
+            state = [...state, action.payload];
+      
+            return state;
+          },
+    },
+})
 
-//             state = action.payload
-//         })
-//     }
-// })
-
-// export default pokedexSlice.reducer 
+export default pokedexSlice.reducer 

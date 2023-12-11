@@ -5,9 +5,9 @@ import axios from "axios"
 
 
 
-export const listarPorId = createAsyncThunk('listarPorId', async (idnumber: number | string) => {
+export const listarPorId = createAsyncThunk('listarPorId', async (id: string | undefined) => {
     try {
-        const resposta = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idnumber}/`)
+        const resposta = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
 
         const habilidades: Array<string> = [];
         const stats: Stat[] = [];
