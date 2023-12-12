@@ -4,8 +4,8 @@ import { useAppDispatch } from "../store/hooks";
 import ListarPokemons from "../components/ListarPokemons";
 import BotaoPaginacao from "../components/BotaoPaginacao";
 import AppBarStyled from "../components/AppBarStyled";
-import FloatButton from "../components/FloatButton";
 import { Box } from '@mui/material'
+import Footer from "../components/Footer";
 
 
 function Home() {
@@ -18,11 +18,12 @@ function Home() {
 
     return (
         <>
-        <Box component="main" height="100%" width="100%" bgcolor="#6e6d6d">
+        <Box component="main" height="100%" width="100%" bgcolor="#589253">
             <AppBarStyled />
             <ListarPokemons />
             <BotaoPaginacao />
-            <FloatButton />
+            
+            <Footer />
         </Box>
             
         </>

@@ -11,7 +11,7 @@ function AppBarStyled() {
         <Toolbar sx={{ justifyContent: 'center' }}>
             <ImageList sx={{width: 200, display: {xs: 'none', sm: "block"}}} >
               <ImageListItem >
-                <img src="src\assets\pokemon-logo-8.png" alt=""  />
+                <img src="\src\assets\pokemon-logo-8.png" alt=""/>
               </ImageListItem>
             </ImageList>
         </Toolbar>

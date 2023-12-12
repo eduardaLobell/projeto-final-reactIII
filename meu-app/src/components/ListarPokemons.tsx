@@ -1,28 +1,38 @@
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { Card, CardActions, CardContent, Box, Typography, Avatar, Container, Grid, IconButton, CardMedia, Button } from '@mui/material'
+import { Card, CardActions, CardContent, Typography, Container, Grid, IconButton, CardMedia, Button } from '@mui/material'
 import { useEffect } from "react";
-import { PokemonSumario } from "../store/modules/pokemons/pokemons.slice";
-import { FavoriteRounded, FavoriteBorderRounded, VisibilityRounded } from '@mui/icons-material'
-import Personagem from "../pages/Personagem";
-import { listarPorId } from "../store/modules/pokemon/actions";
+import { PokemonSumario, mudarFavorito } from "../store/modules/pokemons/pokemons.slice";
+import { FavoriteRounded, FavoriteBorderRounded } from '@mui/icons-material'
 import { useNavigate } from "react-router-dom";
+import { addPokedex, removerPokedex } from "../store/modules/pokedex/pokedex.slice";
 
 
 function ListarPokemons() {
-
-  // const dispatch = useAppDispatch();
+  const pokemons = useAppSelector((state) => state.pokemons.pokemons)
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-
+  // add favorito/pokedex
   function handleFavorite(id: number) {
-    
+    const pokemon = pokemons.find((poke) => poke.id == id)
+    if(!pokemon) return
+
+    if (pokemon.favorito) {
+      dispatch(removerPokedex({ id }))
+    } else {
+      dispatch(addPokedex({ id, nome: pokemon.nome, imagemURL: pokemon.imagemURL }))
+    }
+
+    dispatch(mudarFavorito({id}))
+
   }
 
+  // mostrar detalhes
   function handleDetails(id: number) {
     navigate(`/personagem/${id}`);
   }
 
-  const pokemons = useAppSelector((state) => state.pokemons.pokemons)
+  
 
 
   useEffect(() => {
@@ -71,9 +81,17 @@ function ListarPokemons() {
                     Detalhes
                   </Button>
 
-                  <Button onClick={() =>  handleFavorite(item.id)} variant="outlined" color="error">
-                    Favoritar
-                  </Button>
+                  <IconButton
+                    aria-label="Favoritar"
+                    color="error"
+                    onClick={() => handleFavorite(item.id)}
+                  >
+                    {item.favorito ? (
+                      <FavoriteRounded color="error" />
+                    ) : (
+                      <FavoriteBorderRounded color="error" />
+                    )}
+                  </IconButton>
                 </CardActions>
               </Card>
 
