@@ -6,6 +6,7 @@ export interface PokemonSumario {
   nome: string;
   altura: string;
   largura: string;
+  baseExpirience: number;
   imagemURL: string;
   detalhesURL: string;
   favorito: boolean;
