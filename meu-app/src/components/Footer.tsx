@@ -10,7 +10,7 @@ function Footer() {
                 total de pokemons: {pokemons.count}
             </Typography>
             <Typography sx={{ color: '#ffff' }}>
-                Desenvolvido por: Eduarda Löbell da Silva
+                Desenvolvido por: Eduarda Löbell da Silva e co-desenvolvido por: Felipe Gustavo Borba Giehl
             </Typography>
         </Box>
     )

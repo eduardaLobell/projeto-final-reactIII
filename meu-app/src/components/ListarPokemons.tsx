@@ -1,10 +1,10 @@
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { Card, CardActions, CardContent, Typography, Container, Grid, IconButton, CardMedia, Button } from '@mui/material'
+import { FavoriteBorderRounded, FavoriteRounded } from '@mui/icons-material';
+import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, IconButton, Typography } from '@mui/material';
 import { useEffect } from "react";
-import { PokemonSumario, mudarFavorito } from "../store/modules/pokemons/pokemons.slice";
-import { FavoriteRounded, FavoriteBorderRounded } from '@mui/icons-material'
 import { useNavigate } from "react-router-dom";
-import { addPokedex, removerPokedex } from "../store/modules/pokedex/pokedex.slice";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { addPokedex } from "../store/modules/pokedex/pokedex.slice";
+import { PokemonSumario, mudarFavorito } from "../store/modules/pokemons/pokemons.slice";
 
 
 function ListarPokemons() {
@@ -17,12 +17,7 @@ function ListarPokemons() {
     const pokemon = pokemons.find((poke) => poke.id == id)
     if(!pokemon) return
 
-    if (pokemon.favorito) {
-      dispatch(removerPokedex({ id }))
-    } else {
-      dispatch(addPokedex({ id, nome: pokemon.nome, imagemURL: pokemon.imagemURL }))
-    }
-
+    dispatch(addPokedex({ id, nome: pokemon.nome, imagemURL: pokemon.imagemURL }))
     dispatch(mudarFavorito({id}))
 
   }

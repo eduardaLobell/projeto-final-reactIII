@@ -27,11 +27,11 @@ const pokedexSlice = createSlice({
 
             return state;
         },
-        removerPokedex: (state, action: PayloadAction<{ id: number }>) => {
+        // removerPokedex: (state, action: PayloadAction<{ id: number }>) => {
 
-        }
+        // }
     },
 })
 
-export const { addPokedex, removerPokedex } = pokedexSlice.actions;
+export const { addPokedex } = pokedexSlice.actions;
 export default pokedexSlice.reducer 

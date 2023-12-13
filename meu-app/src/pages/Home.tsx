@@ -1,11 +1,12 @@
+import { Box } from '@mui/material';
 import { useEffect } from "react";
-import { listarPokemons } from "../store/modules/pokemons/actions";
-import { useAppDispatch } from "../store/hooks";
-import ListarPokemons from "../components/ListarPokemons";
-import BotaoPaginacao from "../components/BotaoPaginacao";
 import AppBarStyled from "../components/AppBarStyled";
-import { Box } from '@mui/material'
+import BotaoPaginacao from "../components/BotaoPaginacao";
+import FloatButton from "../components/FloatButton";
 import Footer from "../components/Footer";
+import ListarPokemons from "../components/ListarPokemons";
+import { useAppDispatch } from "../store/hooks";
+import { listarPokemons } from "../store/modules/pokemons/actions";
 
 
 function Home() {
@@ -22,7 +23,7 @@ function Home() {
             <AppBarStyled />
             <ListarPokemons />
             <BotaoPaginacao />
-            
+            <FloatButton />
             <Footer />
         </Box>
             
