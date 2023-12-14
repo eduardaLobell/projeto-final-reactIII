@@ -7,7 +7,7 @@ function BotaoPaginacao() {
     const contadorPokemons = useAppSelector((state) => state.pokemons.count)
     const dispatch = useAppDispatch();
 
-    const handleChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    const handleChange = (_event: React.ChangeEvent<unknown>, page: number) => {
         const offset = (page - 1) * 20
         dispatch(listarPokemons(offset));
 
